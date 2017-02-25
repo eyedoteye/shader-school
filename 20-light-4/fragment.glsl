@@ -29,7 +29,7 @@ float lambertWeight(
 
 void main() {
   vec3 normal = normalize(fragmentNormal); 
-  vec3 eyePosition = normalize(viewPosition);
+  vec3 viewDirection = normalize(viewPosition);
   
   //Note: The next operation seems to only match the target shader if
   //both vectors are first converted to view coordinates before subtracting.
@@ -41,7 +41,7 @@ void main() {
 	                               lightDirection) +
                specular * phongWeight(normal,
 	                              lightDirection,
-				      eyePosition,
+				      viewDirection,
 				      shininess);
   gl_FragColor = vec4(color,1);
 }
